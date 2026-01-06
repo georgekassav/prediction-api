@@ -1,0 +1,18 @@
+import { drizzle } from 'drizzle-orm/node-postgres';
+import { Pool } from 'pg';
+import * as schema from './schema';
+import { config } from '../common/config/config';
+
+const pool = new Pool({
+  connectionString: config.DATABASE_URL,
+});
+
+pool.on('error', (err) => {
+  console.error('Unexpected error on idle client', err);
+  process.exit(-1);
+});
+
+export const db = drizzle(pool, { schema });
+
+export { pool };
+export * from './schema';
