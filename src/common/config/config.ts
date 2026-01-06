@@ -24,6 +24,7 @@ export const config = {
   // Server
   NODE_ENV: process.env.NODE_ENV || 'development',
   PORT: parseInt(process.env.PORT || '3000', 10),
+  HOST: process.env.HOST || '0.0.0.0',
   FRONTEND_URL: process.env.FRONTEND_URL || 'http://localhost:3001',
 
   // Database
